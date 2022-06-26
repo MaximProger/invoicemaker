@@ -47,13 +47,7 @@ function scripts() {
         {
           mode: "production",
           performance: { hints: false },
-          plugins: [
-            new webpack.ProvidePlugin({
-              $: "jquery",
-              jQuery: "jquery",
-              "window.jQuery": "jquery",
-            }), // jQuery (npm i jquery)
-          ],
+          plugins: [],
           module: {
             rules: [
               {
@@ -83,7 +77,7 @@ function scripts() {
       )
     )
     .on("error", (err) => {
-      this.emit("end");
+      this.emit(err);
     })
     .pipe(concat("app.min.js"))
     .pipe(dest("app/js"))

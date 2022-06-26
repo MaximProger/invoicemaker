@@ -15,10 +15,951 @@ html {
 }
 
 body {
+  font-family: "SF Pro Text";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 20px;
+
   position: relative;
 
   overflow-x: hidden;
+
+  background: #edeef0;
+  color: #000000;
 }
 
 .container {
+  width: 100%;
+  max-width: 1150px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.main {
+  padding: 52px 0;
+}
+
+.header {
+  padding-top: 12px;
+  padding-bottom: 12px;
+
+  background: #333333;
+  box-shadow: inset 0px -1px 0px #4872a3;
+
+  .container {
+    max-width: 1188px;
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  font-family: "SF Pro Display";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+
+  text-decoration: none;
+  letter-spacing: 0.326451px;
+
+  color: #ffffff;
+
+  &::before {
+    display: block;
+
+    width: 17px;
+    height: 18px;
+    margin-right: 10px;
+
+    content: "";
+
+    background: url("../images/dist/logo.svg") no-repeat center;
+  }
+}
+
+.bill-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+
+  margin-bottom: 40px;
+}
+
+.bill-title {
+  font-family: "SF Pro Display";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 28px;
+  letter-spacing: 0.326451px;
+
+  margin: 0;
+  margin-right: 40px;
+  margin-bottom: 6px;
+
+  color: #000000;
+}
+
+.form-line {
+  margin-bottom: 26px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &--flex {
+    display: flex;
+    justify-content: flex-start;
+
+    width: 100%;
+
+    .form-item {
+      margin-left: 16px;
+
+      &:first-child {
+        margin-left: 0;
+      }
+
+      &--remove {
+        margin-left: 13px;
+      }
+    }
+  }
+}
+
+.form-item {
+  position: relative;
+
+  width: 100%;
+
+  &--add {
+    display: flex;
+    align-items: center;
+
+    height: 66px;
+  }
+
+  &--remove {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+
+    width: 13px;
+  }
+}
+
+.form-label {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+
+  letter-spacing: -0.154px;
+
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #5a6c74;
+
+  &--calendar {
+    &::after {
+      position: absolute;
+      top: 38px;
+      right: 12px;
+
+      display: block;
+
+      width: 16px;
+      height: 16px;
+
+      content: "";
+
+      background: url("../images/dist/icons/calendar.svg") no-repeat center;
+    }
+  }
+}
+
+.form-inner {
+  display: flex;
+
+  .form-input {
+    border-radius: 6px 0 0 6px;
+  }
+}
+
+.form-input {
+  font-family: "SF Pro Text";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 20px;
+
+  display: flex;
+  align-items: center;
+  letter-spacing: -0.24px;
+
+  outline: none;
+
+  padding-left: 12px;
+  padding-right: 12px;
+  height: 40px;
+  width: 100%;
+
+  transition: all 0.2s linear;
+
+  background: #f8f8f8;
+  border: 1px solid #e8edef;
+  border-radius: 6px;
+
+  color: #000000;
+
+  &--date {
+    &:focus {
+      background: #f8f8f8;
+      border-radius: 6px 6px 0px 0px;
+    }
+  }
+
+  &:read-only {
+    color: rgba($color: #000000, $alpha: 0.5);
+  }
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+  }
+
+  &[type="number"] {
+    -moz-appearance: textfield; /* Firefox */
+  }
+
+  & + .error {
+    font-family: "SF Pro Text";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    letter-spacing: -0.078px;
+
+    display: block;
+
+    margin-top: 8px;
+
+    color: #e64646;
+  }
+}
+
+.form-symbol {
+  font-family: "SF Pro Text";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 20px;
+  letter-spacing: -0.24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 27px;
+  min-width: 27px;
+
+  background: #f8f8f8;
+  border: 1px solid #e8edef;
+  border-left: none;
+  border-radius: 0 6px 6px 0;
+
+  color: rgba($color: #bec5cc, $alpha: 0.5);
+}
+
+.form-select {
+  font-family: "SF Pro Text";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+
+  float: none;
+
+  width: 100%;
+  height: 40px;
+  padding-left: 12px;
+  padding-right: 12px;
+
+  background: #f8f8f8;
+  border: 1px solid #e8edef;
+  border-radius: 6px;
+
+  &::after {
+    right: 14px;
+    top: 50%;
+
+    display: block;
+
+    width: 12px;
+    height: 6px;
+    margin: 0;
+    padding: 0;
+
+    content: "";
+    transform: translateY(-50%);
+
+    border: none;
+    background: url("../images/dist/icons/select__arrow.svg") no-repeat center;
+  }
+
+  &:active,
+  &:focus {
+    border-color: #e8edef;
+  }
+
+  &.open {
+    box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.08);
+    border-radius: 6px 6px 0 0;
+    background: #f7f8fa;
+    border: 1px solid #dce1e6;
+
+    &::after {
+      transform: translateY(-50%) rotate(-180deg);
+    }
+
+    .current {
+      color: #5a6c74;
+
+      opacity: 0.7;
+    }
+  }
+
+  .option.disabled {
+    display: none;
+  }
+
+  .option {
+    padding-left: 11px;
+    padding-right: 11px;
+
+    &:hover,
+    &:focus {
+      background: rgba(29, 103, 171, 0.1);
+    }
+
+    &.selected {
+      background: #1d67ab !important;
+      color: #fff;
+    }
+  }
+
+  .list {
+    width: 100%;
+    margin-top: 0;
+
+    background: #ffffff;
+    border: none;
+    border-radius: 0 0 6px 6px;
+  }
+}
+
+.form-select .list:hover .option:not(:hover).selected {
+  background-color: #1d67ab !important;
+}
+
+.form-switch {
+  position: relative;
+  display: inline-block;
+  width: 28px;
+  height: 10px;
+}
+
+.form-switch .form-switch__checkbox {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.form-switch__round {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #d3d9de;
+  border-radius: 45px;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.form-switch__round:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: -2px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: white;
+  border: 1px solid #aeb7c2;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.form-switch__checkbox:checked + .form-switch__round {
+  background: rgba(29, 103, 171, 0.4);
+}
+
+.form-switch__checkbox:focus + .form-switch__round {
+  box-shadow: 0 0 1px rgba(29, 103, 171, 0.4);
+}
+
+.form-switch__checkbox:checked + .form-switch__round:before {
+  transform: translateY(-50%) translateX(16px);
+
+  background: #1d67ab;
+  border-color: #1d67ab;
+}
+
+.form-switch__round {
+  border-radius: 34px;
+}
+
+.form-switch__round:before {
+  border-radius: 50%;
+}
+
+.form-add {
+  font-family: "SF Pro Text";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 20px;
+
+  display: flex;
+  align-items: center;
+
+  width: fit-content;
+
+  transition: all 0.2s linear;
+  letter-spacing: -0.24px;
+  text-decoration: none;
+
+  border-bottom: 1px solid transparent;
+  color: #1d67ab;
+
+  &:hover {
+    border-color: #1d67ab;
+  }
+}
+
+.form-remove {
+  width: 13px;
+  height: 13px;
+  padding: 0;
+  margin-bottom: 13px;
+
+  outline: none;
+  cursor: pointer;
+  transition: all 0.2s linear;
+
+  border: none;
+  background: url("../images/dist/icons/remove.svg") no-repeat center;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.form-remove__popup {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 2;
+
+  width: 292px;
+  padding: 20px;
+  padding-top: 22px;
+
+  background: #ffffff;
+  border: 0.5px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.08), 0px 8px 24px rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+}
+
+.form-remove__text {
+  font-family: "SF Pro Text";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+  letter-spacing: -0.078px;
+
+  margin-bottom: 26px;
+
+  color: #5a6c74;
+}
+
+.form-remove__link {
+  font-family: "SF Pro Text";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 20px;
+  letter-spacing: -0.24px;
+
+  display: inline-block;
+
+  margin-right: 25px;
+
+  transition: all 0.2s linear;
+  text-decoration: none;
+
+  border-bottom: 1px solid transparent;
+  color: rgba(90, 108, 116, 0.5);
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &:hover {
+    border-color: rgba(90, 108, 116, 0.5);
+  }
+
+  &--red {
+    color: #e64646;
+
+    &:hover {
+      border-color: #e64646;
+    }
+  }
+}
+
+.form-file {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+
+  margin-right: 28px;
+}
+
+.form-file__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  cursor: pointer;
+
+  &:hover {
+    .form-file__text {
+      border-color: #1d67ab;
+    }
+  }
+
+  &--done {
+    .form-file__btn {
+      transform: rotate(45deg);
+    }
+
+    .form-file__text {
+      font-family: "SF Pro Text";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 15px;
+      line-height: 20px;
+      overflow: hidden;
+
+      width: 214px;
+
+      letter-spacing: -0.32px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+
+      border-bottom: none;
+      color: #000000;
+    }
+  }
+}
+
+.form-file__btn {
+  display: block;
+
+  width: 40px;
+  min-width: 40px;
+  height: 40px;
+  margin-right: 12px;
+
+  content: "";
+
+  border-radius: 50%;
+  background: url("../images/dist/icons/add-file.svg") no-repeat center #f8f8f8;
+}
+
+.form-file__label {
+  position: relative;
+}
+
+.form-file__input {
+  position: absolute;
+
+  visibility: hidden;
+
+  opacity: 0;
+}
+
+.form-file__text {
+  font-family: "SF Pro Text";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: -0.32px;
+
+  display: block;
+
+  transition: all 0.2s linear;
+
+  border-bottom: 1px solid transparent;
+  color: #1d67ab;
+}
+
+.bill-header__row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+
+.bill-header__col {
+  width: 228px;
+}
+
+.bill-header__text {
+  font-family: "SF Pro Display";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+
+  margin-left: 40px;
+  margin-right: 30px;
+  margin-bottom: 9px;
+
+  letter-spacing: 0.326451px;
+
+  color: #000000;
+}
+
+.xdsoft_datetimepicker {
+  font-family: "SF Pro Text";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+
+  letter-spacing: -0.24px;
+
+  padding: 15px 12px 16px;
+  width: 228px;
+
+  color: #000000;
+  background: #ffffff;
+  border: 1px solid #e8edef;
+  box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.08);
+  border-radius: 0 0 6px 6px;
+}
+
+.xdsoft_datetimepicker .xdsoft_datepicker {
+  float: none;
+
+  margin-left: 0;
+  width: 100%;
+}
+
+.xdsoft_datetimepicker .xdsoft_next,
+.xdsoft_datetimepicker .xdsoft_prev {
+  float: none;
+
+  width: 8px;
+  height: 13px;
+
+  background: url("../images/dist/icons/calendar__arrow.svg") no-repeat center;
+}
+
+.xdsoft_datetimepicker .xdsoft_prev {
+  margin-right: auto;
+}
+
+.xdsoft_datetimepicker .xdsoft_next {
+  margin-left: auto;
+
+  transform: rotate(-180deg);
+}
+
+.xdsoft_datetimepicker .xdsoft_today_button {
+  display: none;
+}
+
+.xdsoft_datetimepicker .xdsoft_label {
+  font-family: "SF Pro Text";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+
+  letter-spacing: -0.154px;
+
+  width: auto;
+  padding: 0;
+
+  color: #5a6c74;
+}
+
+.xdsoft_datetimepicker .xdsoft_label i {
+  width: 10px;
+  height: 5px;
+  margin-left: 6px;
+
+  opacity: 1;
+
+  background: url("../images/dist/icons/calendar__arrow-2.svg") no-repeat center;
+}
+
+.xdsoft_monthpicker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 15px;
+}
+
+.xdsoft_datetimepicker .xdsoft_month {
+  min-width: 80px;
+}
+
+.xdsoft_datetimepicker .xdsoft_year {
+  margin-left: 20px;
+}
+
+.xdsoft_datetimepicker .xdsoft_label > .xdsoft_select {
+  border-radius: 6px;
+  border: 1px solid #dce1e6;
+  box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.08);
+}
+
+.xdsoft_datetimepicker
+  .xdsoft_label
+  > .xdsoft_select
+  > div
+  > .xdsoft_option.xdsoft_current {
+  font-weight: 400;
+
+  transition: all 0.2s linear;
+
+  background: #1d67ab;
+  box-shadow: none;
+
+  color: #fff;
+}
+
+.xdsoft_datetimepicker
+  .xdsoft_label
+  > .xdsoft_select
+  > div
+  > .xdsoft_option:hover {
+  color: #000000;
+  background: rgba(29, 103, 171, 0.1);
+}
+
+.xdsoft_datetimepicker .xdsoft_label > .xdsoft_select {
+  top: 25px;
+}
+
+.xdsoft_datetimepicker .xdsoft_calendar th {
+  font-family: "SF Pro Text";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+
+  height: 20px;
+  padding-bottom: 8px;
+
+  letter-spacing: -0.24px;
+
+  background: none;
+  border: none;
+  color: #5a6c74;
+}
+
+.xdsoft_datetimepicker .xdsoft_calendar td {
+  font-family: "SF Pro Text";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+
+  height: 28px;
+
+  letter-spacing: -0.24px;
+  text-align: center;
+
+  color: #000000;
+  border: none;
+  background: none;
+  border-radius: 6px;
+}
+
+.xdsoft_datetimepicker .xdsoft_calendar td > div {
+  padding-right: 0;
+}
+
+.xdsoft_datetimepicker .xdsoft_calendar td.xdsoft_default,
+.xdsoft_datetimepicker .xdsoft_calendar td.xdsoft_current,
+.xdsoft_datetimepicker
+  .xdsoft_timepicker
+  .xdsoft_time_box
+  > div
+  > div.xdsoft_current {
+  font-weight: 400;
+
+  background: #1d67ab;
+
+  box-shadow: none;
+}
+
+.xdsoft_datetimepicker .xdsoft_calendar td:hover,
+.xdsoft_datetimepicker .xdsoft_timepicker .xdsoft_time_box > div > div:hover {
+  color: #000 !important;
+  background: rgba(29, 103, 171, 0.1) !important;
+  box-shadow: none !important;
+}
+
+.bill-intro {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  margin-bottom: 30px;
+}
+
+.bill-intro__col {
+  width: 49%;
+  padding: 40px;
+  padding-right: 70px;
+
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+}
+
+.bill-intro__title {
+  font-family: "SF Pro Display";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+
+  margin-top: 0;
+  margin-bottom: 24px;
+
+  letter-spacing: 0.38px;
+
+  color: #000000;
+}
+
+.bill-section {
+  padding: 40px;
+  padding-right: 54px;
+  margin-bottom: 30px;
+
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+}
+
+.bill-section__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 24px;
+  padding-right: 26px;
+}
+
+.bill-section__title {
+  font-family: "SF Pro Display";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0.38px;
+
+  margin: 0;
+
+  color: #000000;
+}
+
+.bill-section__subtitle {
+  font-family: "SF Pro Text";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: -0.32px;
+
+  margin-top: 30px;
+  margin-bottom: 14px;
+
+  color: #000000;
+}
+
+.bill-section__text {
+  font-family: "SF Pro Text";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -0.078px;
+
+  color: #5a6c74;
+}
+
+.bill-section__hidden {
+  display: none;
+}
+
+.w-88 {
+  width: 88px;
+}
+
+.w-101 {
+  width: 101px;
+}
+
+.w-108 {
+  width: 108px;
+}
+
+.w-234 {
+  width: 234px;
+}
+
+.w-266 {
+  width: 266px;
+}
+
+.w-336 {
+  width: 336px;
+}
+
+.w-427 {
+  width: 427px;
+}
+
+.w-440 {
+  width: 440px;
 }

@@ -5,12 +5,333 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="./css/include/jquery.datetimepicker.min.css">
+  <link rel="stylesheet" href="./css/include/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="./css/include/nice-select.css">
   <link rel="stylesheet" href="./css/app.min.css">
   <title>invoicemaker</title>
 </head>
 
 <body>
 
+  <div class="header">
+    <div class="container">
+      <div class="header__inner">
+        <a href="/" class="logo">invoicemaker</a>
+      </div>
+    </div>
+  </div>
+
+  <main class="main">
+    <div class="container">
+      <form action="/" class="bill-form form" id="bill_form" name="bill_form">
+        <section class="bill-header">
+          <h1 class="bill-title">Счёт №</h1>
+          <div class="bill-header__row">
+            <div class="bill-header__col">
+              <div class="form-item">
+                <label for="bill_number" class="form-label">Номер счёта</label>
+                <input class="form-input" type="number" name="bill_number" id="bill_number">
+              </div>
+            </div>
+            <span class="bill-header__text">от</span>
+            <div class="bill-header__col">
+              <div class="form-item">
+                <label for="bill_date" class="form-label form-label--calendar">Дата счёта</label>
+                <input class="form-input form-input--date" type="text" name="bill_date" id="bill_date">
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="bill-intro">
+          <div class="bill-intro__col">
+            <div class="bill-intro__wrapper">
+              <h2 class="bill-intro__title">Продавец</h2>
+              <div class="bill-intro__inner">
+                <div class="form-line">
+                  <div class="form-item">
+                    <label for="seller_inn" class="form-label">ИНН*</label>
+                    <input class="form-input" type="number" name="seller_inn" id="seller_inn" required minlength="10">
+                  </div>
+                </div>
+
+                <div class="form-line">
+                  <div class="form-item form-item--add">
+                    <a href="#" class="form-add js-add--kpp">
+                      Указать КПП
+                    </a>
+                  </div>
+                </div>
+
+                <div class="form-line">
+                  <div class="form-item">
+                    <label for="seller_bik" class="form-label">БИК*</label>
+                    <input class="form-input" type="number" name="seller_bik" id="seller_bik" required minlength="10">
+                  </div>
+                </div>
+
+                <div class="form-line">
+                  <div class="form-item">
+                    <label for="seller_checking_account" class="form-label">Расчётный счёт*</label>
+                    <input class="form-input" type="number" name="seller_checking_account" id="seller_checking_account"
+                      required minlength="10">
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <div class="bill-intro__col">
+            <div class="bill-intro__wrapper">
+              <h2 class="bill-intro__title">Продавец</h2>
+              <div class="bill-intro__inner">
+                <div class="form-line">
+                  <div class="form-item">
+                    <label for="payer_inn" class="form-label">ИНН*</label>
+                    <input class="form-input" type="number" name="payer_inn" id="payer_inn" required minlength="10">
+                  </div>
+                </div>
+
+                <div class="form-line">
+                  <div class="form-item">
+                    <label for="payer_kpp" class="form-label">КПП</label>
+                    <input class="form-input" type="number" name="payer_kpp" id="payer_kpp" minlength="9" maxlength="9">
+                  </div>
+                </div>
+
+                <div class="form-line">
+                  <div class="form-item">
+                    <label for="payer_bik" class="form-label">БИК</label>
+                    <input class="form-input" type="number" name="payer_bik" id="payer_bik" minlength="10">
+                  </div>
+                </div>
+
+                <div class="form-line">
+                  <div class="form-item">
+                    <label for="payer_checking_account" class="form-label">Расчётный счёт</label>
+                    <input class="form-input" type="number" name="payer_checking_account" id="payer_checking_account"
+                      minlength="10">
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <section class="bill-section">
+          <div class="bill-section__header">
+            <h2 class="bill-section__title">Наименование товара, работ или услуг</h2>
+          </div>
+          <h3 class="bill-section__subtitle">Настройки для всех пунктов</h3>
+          <div class="form__wrapper">
+            <div class="form-line">
+              <div class="form-item w-234">
+                <label for="tax_rate" class="form-label">Налоговая ставка</label>
+                <select class="form-select" name="tax_rate" id="tax_rate">
+                  <option value="" disabled selected>Выберите категорию</option>
+                  <option value="Без НДС">Без НДС</option>
+                  <option value="НДС 10%">НДС 10%</option>
+                  <option value="НДС 18%">НДС 18%</option>
+                  <option value="НДС 20%">НДС 20%</option>
+                  <option value="Без НДС">Без НДС</option>
+                  <option value="Укажу вручную">Укажу вручную</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <h3 class="bill-section__subtitle">Пункты счёта</h3>
+          <div class="form__wrapper">
+            <div class="form-line form-line--flex">
+
+              <div class="form-item w-427">
+                <label for="acc_points_name_1" class="form-label">1</label>
+                <input class="form-input" type="text" name="acc_points_name_1" id="acc_points_name_1">
+              </div>
+
+              <div class="form-item w-108">
+                <label for="acc_points_price_1" class="form-label">Цена</label>
+                <div class="form-inner">
+                  <input class="form-input" type="number" name="acc_points_price_1" id="acc_points_price_1">
+                  <span class="form-symbol">₽</span>
+                </div>
+              </div>
+
+              <div class="form-item w-88">
+                <label for="acc_points_count_1" class="form-label">Количество</label>
+                <input class="form-input" type="number" name="acc_points_count_1" id="acc_points_count_1">
+              </div>
+
+              <div class="form-item w-101">
+                <label for="acc_points_units_1" class="form-label">Ед. измерения</label>
+                <select class="form-select" name="acc_points_units_1" id="acc_points_units_1">
+                  <option value="шт" selected>шт</option>
+                  <option value="гр">гр</option>
+                  <option value="кг">кг</option>
+                  <option value="т">т</option>
+                </select>
+              </div>
+
+              <div class="form-item w-88">
+                <label for="acc_points_nds_1" class="form-label">НДС</label>
+                <input class="form-input" type="number" name="acc_points_nds_1" id="acc_points_nds_1" value="0"
+                  readonly>
+              </div>
+
+              <div class="form-item w-108">
+                <label for="acc_points_sum_1" class="form-label">Сумма с НДС</label>
+
+                <div class="form-inner">
+                  <input class="form-input" type="number" name="acc_points_sum_1" id="acc_points_sum_1" value="0"
+                    readonly>
+                  <span class="form-symbol">₽</span>
+                </div>
+              </div>
+
+              <div class="form-item form-item--remove">
+                <button type="button" class="form-remove form-remove--bill" title="Удалить"></button>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        <section class="bill-section">
+          <div class="bill-section__header">
+            <h2 class="bill-section__title">Договор</h2>
+
+
+            <label class="form-switch">
+              <input class="form-switch__checkbox" type="checkbox" id="contract_switch">
+              <span class="form-switch__round"></span>
+            </label>
+          </div>
+
+          <p class="bill-section__text">
+            Заполняется в том случае, если вам нужен «Счёт-договор»
+          </p>
+
+          <div class="bill-section__hidden">
+            <div class="form__wrapper">
+              <div class="form-line">
+                <div class="form-item w-440">
+                  <label for="contract_title" class="form-label">Заголовок договора</label>
+                  <input class="form-input" type="text" name="contract_title" id="contract_title">
+                </div>
+              </div>
+            </div>
+            <h3 class="bill-section__subtitle">Пункты договора</h3>
+            <div class="form__wrapper" id="contract_list">
+              <div class="form-line form-line--flex">
+
+                <div class="form-item">
+                  <label for="contract_name_1" class="form-label">1</label>
+                  <input class="form-input" type="text" name="contract_name_1" id="contract_name_1">
+                </div>
+
+                <div class="form-item form-item--remove">
+                  <button type="button" class="form-remove form-remove--contract" title="Удалить"></button>
+                </div>
+
+              </div>
+              <div class="form-line form-line--flex">
+
+                <div class="form-item">
+                  <label for="contract_name_2" class="form-label">2</label>
+                  <input class="form-input" type="text" name="contract_name_2" id="contract_name_2">
+                </div>
+
+                <div class="form-item form-item--remove">
+                  <button type="button" class="form-remove form-remove--contract" title="Удалить"></button>
+                </div>
+
+              </div>
+
+              <div class="form-line form-line--flex">
+
+                <div class="form-item">
+                  <label for="contract_name_3" class="form-label">3</label>
+                  <input class="form-input" type="text" name="contract_name_3" id="contract_name_3">
+                </div>
+
+                <div class="form-item form-item--remove">
+                  <button type="button" class="form-remove form-remove--contract" title="Удалить"></button>
+                </div>
+
+              </div>
+
+              <div class="form-line form-line--flex" id="add_contact">
+
+                <div class="form-item">
+                  <a href="#" class="form-add js-add--contract">
+                    Добавить пункт
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="bill-section">
+          <div class="bill-section__header">
+            <h2 class="bill-section__title">Подписи сторон</h2>
+          </div>
+
+          <div class="form__wrapper">
+            <div class="form-line form-line--flex">
+              <div class="form-item w-336">
+                <label for="job_1" class="form-label">Должность</label>
+                <input class="form-input" type="text" name="job_1" id="job_1">
+              </div>
+              <div class="form-item w-336">
+                <label for="fio_1" class="form-label">ФИО</label>
+                <input class="form-input" type="text" name="fio_1" id="fio_1">
+              </div>
+              <div class="form-item form-file w-266">
+                <div class="form-file__wrapper">
+                  <label for="file_1" class="form-file__btn"></label>
+                  <label for="file_1" class="form-file__label">
+                    <input class="form-file__input" type="file" name="file_1" id="file_1">
+                    <span class="form-file__text">Добавить подпись</span>
+                  </label>
+                </div>
+
+              </div>
+              <div class="form-item form-item--remove">
+                <button type="button" class="form-remove form-remove--side" title="Удалить"></button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        <button>Send</button>
+
+      </form>
+    </div>
+  </main>
+
+  <a data-fancybox href="#hidden">Открыть Fancybox (Inline)</a>
+
+  <div style="display: none; width: 500px;" id="hidden">
+    <h2>Контент из скрытого div</h2>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dignissim
+      vulputate eros.
+    </p>
+    <p>
+      Donec hendrerit efficitur ex vitae euismod. Maecenas ut leo vitae ipsum dictum
+      cursus vel vitae nulla.
+    </p>
+  </div>
+
+  <script src="js/include/jquery.min.js"></script>
+  <script src="./js/include/jquery.datetimepicker.full.min.js"></script>
+  <script src="./js/include/jquery.validate.min.js"></script>
+  <script src="./js/include/jquery.fancybox.min.js"></script>
+  <script src="./js/include/jquery.nice-select.min.js"></script>
   <script src="./js/app.min.js"></script>
 
 </body>
