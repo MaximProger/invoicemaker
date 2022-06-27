@@ -162,61 +162,63 @@ $(document).ready(function () {
     let billCount = $("#billList").children().length;
 
     const billLine = `
-    <div class="form-line form-line--flex">
+    <div class="form-line bill-line form-line--flex">
 
-    <div class="form-item w-427">
-      <label for="acc_points_name_${billCount}" class="form-label">${billCount}</label>
-      <input class="form-input" type="text" name="acc_points_name_${billCount}" id="acc_points_name_${billCount}">
-    </div>
+              <div class="form-item w-427">
+                <label for="acc_points_name_${billCount}" class="form-label">${billCount}</label>
+                <input class="form-input bill-input" type="text" name="acc_points_name_${billCount}" id="acc_points_name_${billCount}">
+              </div>
 
-    <div class="form-item w-108">
-      <label for="acc_points_price_${billCount}" class="form-label">Цена</label>
-      <div class="form-inner">
-        <input class="form-input" type="number" name="acc_points_price_${billCount}" id="acc_points_price_${billCount}">
-        <span class="form-symbol">₽</span>
-      </div>
-    </div>
+              <div class="form-item w-108">
+                <label for="acc_points_price_${billCount}" class="form-label">Цена</label>
+                <div class="form-inner">
+                  <input class="form-input bill-input bill-input--price" type="number" name="acc_points_price_${billCount}"
+                    id="acc_points_price_${billCount}">
+                  <span class="form-symbol">₽</span>
+                </div>
+              </div>
 
-    <div class="form-item w-88">
-      <label for="acc_points_count_${billCount}" class="form-label">Количество</label>
-      <input class="form-input" type="number" name="acc_points_count_${billCount}" id="acc_points_count_${billCount}">
-    </div>
+              <div class="form-item w-88">
+                <label for="acc_points_count_${billCount}" class="form-label">Количество</label>
+                <input class="form-input bill-input bill-input--count" type="number" name="acc_points_count_${billCount}"
+                  id="acc_points_count_${billCount}">
+              </div>
 
-    <div class="form-item w-101">
-      <label for="acc_points_units_${billCount}" class="form-label">Ед. измерения</label>
-      <select class="form-select form-select--new" name="acc_points_units_${billCount}" id="acc_points_units_${billCount}">
-        <option value="кг">кг</option>
-        <option value="м2">м2</option>
-        <option value="м3">м3</option>
-        <option value="л">л</option>
-        <option value="м">м</option>
-        <option value="пар">пар</option>
-        <option value="г">г</option>
-        <option value="шт" selected>шт</option>
-      </select>
-    </div>
+              <div class="form-item w-101">
+                <label for="acc_points_units_${billCount}" class="form-label">Ед. измерения</label>
+                <select class="form-select bill-select" name="acc_points_units_${billCount}" id="acc_points_units_${billCount}">
+                  <option value="кг">кг</option>
+                  <option value="м2">м2</option>
+                  <option value="м3">м3</option>
+                  <option value="л">л</option>
+                  <option value="м">м</option>
+                  <option value="пар">пар</option>
+                  <option value="г">г</option>
+                  <option value="шт" selected>шт</option>
+                </select>
+              </div>
 
-    <div class="form-item w-88">
-      <label for="acc_points_nds_${billCount}" class="form-label">НДС</label>
-      <input class="form-input" type="number" name="acc_points_nds_${billCount}" id="acc_points_nds_${billCount}" value="0"
-        readonly>
-    </div>
+              <div class="form-item w-88">
+                <label for="acc_points_nds_${billCount}" class="form-label">НДС</label>
+                <input class="form-input bill-input bill-input--nds" type="number" name="acc_points_nds_${billCount}"
+                  id="acc_points_nds_${billCount}" value="0" readonly>
+              </div>
 
-    <div class="form-item w-108">
-      <label for="acc_points_sum_${billCount}" class="form-label">Сумма с НДС</label>
+              <div class="form-item w-108">
+                <label for="acc_points_sum_${billCount}" class="form-label">Сумма с НДС</label>
 
-      <div class="form-inner">
-        <input class="form-input" type="number" name="acc_points_sum_${billCount}" id="acc_points_sum_${billCount}" value="0"
-          readonly>
-        <span class="form-symbol">₽</span>
-      </div>
-    </div>
+                <div class="form-inner">
+                  <input class="form-input bill-input bill-input--sum" type="number" name="acc_points_sum_${billCount}"
+                    id="acc_points_sum_${billCount}" value="0" readonly>
+                  <span class="form-symbol">₽</span>
+                </div>
+              </div>
 
-    <div class="form-item form-item--remove">
-      <button type="button" class="form-remove form-remove--bill" title="Удалить"></button>
-    </div>
+              <div class="form-item form-item--remove">
+                <button type="button" class="form-remove form-remove--bill" title="Удалить"></button>
+              </div>
 
-  </div>
+            </div>
       `;
 
     $("#add_bill").before(billLine);

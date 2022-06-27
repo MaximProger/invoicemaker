@@ -1,0 +1,206 @@
+.bill-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+
+  margin-bottom: 40px;
+}
+
+.bill-title {
+  font-family: "SF Pro Display";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 28px;
+  letter-spacing: 0.326451px;
+
+  margin: 0;
+  margin-right: 40px;
+  margin-bottom: 6px;
+
+  color: #000000;
+}
+
+.bill-header__row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+
+.bill-header__col {
+  width: 228px;
+}
+
+.bill-header__text {
+  font-family: "SF Pro Display";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+
+  margin-left: 40px;
+  margin-right: 30px;
+  margin-bottom: 9px;
+
+  letter-spacing: 0.326451px;
+
+  color: #000000;
+}
+
+.bill-intro {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  margin-bottom: 30px;
+}
+
+.bill-intro__col {
+  width: 49%;
+  padding: 40px;
+  padding-right: 70px;
+
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+}
+
+.bill-intro__title {
+  font-family: "SF Pro Display";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+
+  margin-top: 0;
+  margin-bottom: 24px;
+
+  letter-spacing: 0.38px;
+
+  color: #000000;
+}
+
+.bill-section {
+  padding: 40px;
+  padding-right: 54px;
+  margin-bottom: 30px;
+
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+}
+
+.bill-section__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 24px;
+  padding-right: 26px;
+}
+
+.bill-section__title {
+  font-family: "SF Pro Display";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0.38px;
+
+  margin: 0;
+
+  color: #000000;
+}
+
+.bill-section__subtitle {
+  font-family: "SF Pro Text";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: -0.32px;
+
+  margin-top: 30px;
+  margin-bottom: 14px;
+
+  color: #000000;
+}
+
+.bill-section__text {
+  font-family: "SF Pro Text";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -0.078px;
+
+  color: #5a6c74;
+}
+
+.bill-section__hidden {
+  display: none;
+}
+
+.bill-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  margin-bottom: 30px;
+}
+
+.bill-row__col {
+  width: 49%;
+}
+
+.bill-row__section {
+  padding: 52px 70px 50px 40px;
+
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+
+  .form__wrapper {
+    margin-top: 26px;
+
+    &--hidden {
+      display: none;
+    }
+  }
+}
+
+.bill-row__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.bill-row__title {
+  font-family: "SF Pro Text";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+
+  margin: 0;
+
+  letter-spacing: -0.32px;
+
+  color: #000000;
+}
+
+.bill-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 29px 54px 29px 40px;
+
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+}
+
+.bill-footer__submit {
+  width: 328px;
+}
