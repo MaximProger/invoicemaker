@@ -53,7 +53,7 @@
                 <div class="form-line">
                   <div class="form-item">
                     <label for="seller_inn" class="form-label">ИНН*</label>
-                    <input class="form-input" type="number" name="seller_inn" id="seller_inn" required minlength="10">
+                    <input class="form-input" type="number" name="seller_inn" id="seller_inn" required>
                   </div>
                 </div>
 
@@ -68,7 +68,7 @@
                 <div class="form-line">
                   <div class="form-item">
                     <label for="seller_bik" class="form-label">БИК*</label>
-                    <input class="form-input" type="number" name="seller_bik" id="seller_bik" required minlength="10">
+                    <input class="form-input" type="number" name="seller_bik" id="seller_bik" required>
                   </div>
                 </div>
 
@@ -76,7 +76,7 @@
                   <div class="form-item">
                     <label for="seller_checking_account" class="form-label">Расчётный счёт*</label>
                     <input class="form-input" type="number" name="seller_checking_account" id="seller_checking_account"
-                      required minlength="10">
+                      required>
                   </div>
                 </div>
 
@@ -90,29 +90,28 @@
                 <div class="form-line">
                   <div class="form-item">
                     <label for="payer_inn" class="form-label">ИНН*</label>
-                    <input class="form-input" type="number" name="payer_inn" id="payer_inn" required minlength="10">
+                    <input class="form-input" type="number" name="payer_inn" id="payer_inn" required>
                   </div>
                 </div>
 
                 <div class="form-line">
                   <div class="form-item">
                     <label for="payer_kpp" class="form-label">КПП</label>
-                    <input class="form-input" type="number" name="payer_kpp" id="payer_kpp" minlength="9" maxlength="9">
+                    <input class="form-input" type="number" name="payer_kpp" id="payer_kpp">
                   </div>
                 </div>
 
                 <div class="form-line">
                   <div class="form-item">
                     <label for="payer_bik" class="form-label">БИК</label>
-                    <input class="form-input" type="number" name="payer_bik" id="payer_bik" minlength="10">
+                    <input class="form-input" type="number" name="payer_bik" id="payer_bik">
                   </div>
                 </div>
 
                 <div class="form-line">
                   <div class="form-item">
                     <label for="payer_checking_account" class="form-label">Расчётный счёт</label>
-                    <input class="form-input" type="number" name="payer_checking_account" id="payer_checking_account"
-                      minlength="10">
+                    <input class="form-input" type="number" name="payer_checking_account" id="payer_checking_account">
                   </div>
                 </div>
 
@@ -132,60 +131,65 @@
                 <label for="tax_rate" class="form-label">Налоговая ставка</label>
                 <select class="form-select" name="tax_rate" id="tax_rate">
                   <option value="" disabled selected>Выберите категорию</option>
-                  <option value="Без НДС">Без НДС</option>
-                  <option value="НДС 10%">НДС 10%</option>
-                  <option value="НДС 18%">НДС 18%</option>
-                  <option value="НДС 20%">НДС 20%</option>
-                  <option value="Без НДС">Без НДС</option>
-                  <option value="Укажу вручную">Укажу вручную</option>
+                  <option value="0">Без НДС</option>
+                  <option value="10">НДС 10%</option>
+                  <option value="18">НДС 18%</option>
+                  <option value="20">НДС 20%</option>
+                  <option value="0">Укажу вручную</option>
                 </select>
               </div>
             </div>
           </div>
           <h3 class="bill-section__subtitle">Пункты счёта</h3>
-          <div class="form__wrapper">
-            <div class="form-line form-line--flex">
+          <div class="form__wrapper" id="billList">
+            <div class="form-line bill-line form-line--flex">
 
               <div class="form-item w-427">
                 <label for="acc_points_name_1" class="form-label">1</label>
-                <input class="form-input" type="text" name="acc_points_name_1" id="acc_points_name_1">
+                <input class="form-input bill-input" type="text" name="acc_points_name_1" id="acc_points_name_1">
               </div>
 
               <div class="form-item w-108">
                 <label for="acc_points_price_1" class="form-label">Цена</label>
                 <div class="form-inner">
-                  <input class="form-input" type="number" name="acc_points_price_1" id="acc_points_price_1">
+                  <input class="form-input bill-input bill-input--price" type="number" name="acc_points_price_1"
+                    id="acc_points_price_1">
                   <span class="form-symbol">₽</span>
                 </div>
               </div>
 
               <div class="form-item w-88">
                 <label for="acc_points_count_1" class="form-label">Количество</label>
-                <input class="form-input" type="number" name="acc_points_count_1" id="acc_points_count_1">
+                <input class="form-input bill-input bill-input--count" type="number" name="acc_points_count_1"
+                  id="acc_points_count_1">
               </div>
 
               <div class="form-item w-101">
                 <label for="acc_points_units_1" class="form-label">Ед. измерения</label>
-                <select class="form-select" name="acc_points_units_1" id="acc_points_units_1">
-                  <option value="шт" selected>шт</option>
-                  <option value="гр">гр</option>
+                <select class="form-select bill-select" name="acc_points_units_1" id="acc_points_units_1">
                   <option value="кг">кг</option>
-                  <option value="т">т</option>
+                  <option value="м2">м2</option>
+                  <option value="м3">м3</option>
+                  <option value="л">л</option>
+                  <option value="м">м</option>
+                  <option value="пар">пар</option>
+                  <option value="г">г</option>
+                  <option value="шт" selected>шт</option>
                 </select>
               </div>
 
               <div class="form-item w-88">
                 <label for="acc_points_nds_1" class="form-label">НДС</label>
-                <input class="form-input" type="number" name="acc_points_nds_1" id="acc_points_nds_1" value="0"
-                  readonly>
+                <input class="form-input bill-input bill-input--nds" type="number" name="acc_points_nds_1"
+                  id="acc_points_nds_1" value="0" readonly>
               </div>
 
               <div class="form-item w-108">
                 <label for="acc_points_sum_1" class="form-label">Сумма с НДС</label>
 
                 <div class="form-inner">
-                  <input class="form-input" type="number" name="acc_points_sum_1" id="acc_points_sum_1" value="0"
-                    readonly>
+                  <input class="form-input bill-input bill-input--sum" type="number" name="acc_points_sum_1"
+                    id="acc_points_sum_1" value="0" readonly>
                   <span class="form-symbol">₽</span>
                 </div>
               </div>
@@ -194,6 +198,129 @@
                 <button type="button" class="form-remove form-remove--bill" title="Удалить"></button>
               </div>
 
+            </div>
+            <div class="form-line bill-line form-line--flex">
+
+              <div class="form-item w-427">
+                <label for="acc_points_name_2" class="form-label">2</label>
+                <input class="form-input bill-input" type="text" name="acc_points_name_2" id="acc_points_name_2">
+              </div>
+
+              <div class="form-item w-108">
+                <label for="acc_points_price_2" class="form-label">Цена</label>
+                <div class="form-inner">
+                  <input class="form-input bill-input bill-input--price" type="number" name="acc_points_price_2"
+                    id="acc_points_price_2">
+                  <span class="form-symbol">₽</span>
+                </div>
+              </div>
+
+              <div class="form-item w-88">
+                <label for="acc_points_count_2" class="form-label">Количество</label>
+                <input class="form-input bill-input bill-input--count" type="number" name="acc_points_count_2"
+                  id="acc_points_count_2">
+              </div>
+
+              <div class="form-item w-101">
+                <label for="acc_points_units_2" class="form-label">Ед. измерения</label>
+                <select class="form-select bill-select" name="acc_points_units_2" id="acc_points_units_2">
+                  <option value="кг">кг</option>
+                  <option value="м2">м2</option>
+                  <option value="м3">м3</option>
+                  <option value="л">л</option>
+                  <option value="м">м</option>
+                  <option value="пар">пар</option>
+                  <option value="г">г</option>
+                  <option value="шт" selected>шт</option>
+                </select>
+              </div>
+
+              <div class="form-item w-88">
+                <label for="acc_points_nds_2" class="form-label">НДС</label>
+                <input class="form-input bill-input bill-input--nds" type="number" name="acc_points_nds_2"
+                  id="acc_points_nds_2" value="0" readonly>
+              </div>
+
+              <div class="form-item w-108">
+                <label for="acc_points_sum_2" class="form-label">Сумма с НДС</label>
+
+                <div class="form-inner">
+                  <input class="form-input bill-input bill-input--sum" type="number" name="acc_points_sum_2"
+                    id="acc_points_sum_2" value="0" readonly>
+                  <span class="form-symbol">₽</span>
+                </div>
+              </div>
+
+              <div class="form-item form-item--remove">
+                <button type="button" class="form-remove form-remove--bill" title="Удалить"></button>
+              </div>
+
+            </div>
+            <div class="form-line bill-line form-line--flex">
+
+              <div class="form-item w-427">
+                <label for="acc_points_name_3" class="form-label">3</label>
+                <input class="form-input bill-input" type="text" name="acc_points_name_3" id="acc_points_name_3">
+              </div>
+
+              <div class="form-item w-108">
+                <label for="acc_points_price_3" class="form-label">Цена</label>
+                <div class="form-inner">
+                  <input class="form-input bill-input bill-input--price" type="number" name="acc_points_price_3"
+                    id="acc_points_price_3">
+                  <span class="form-symbol">₽</span>
+                </div>
+              </div>
+
+              <div class="form-item w-88">
+                <label for="acc_points_count_3" class="form-label">Количество</label>
+                <input class="form-input bill-input bill-input--count" type="number" name="acc_points_count_3"
+                  id="acc_points_count_3">
+              </div>
+
+              <div class="form-item w-101">
+                <label for="acc_points_units_3" class="form-label">Ед. измерения</label>
+                <select class="form-select bill-select" name="acc_points_units_3" id="acc_points_units_3">
+                  <option value="кг">кг</option>
+                  <option value="м2">м2</option>
+                  <option value="м3">м3</option>
+                  <option value="л">л</option>
+                  <option value="м">м</option>
+                  <option value="пар">пар</option>
+                  <option value="г">г</option>
+                  <option value="шт" selected>шт</option>
+                </select>
+              </div>
+
+              <div class="form-item w-88">
+                <label for="acc_points_nds_3" class="form-label">НДС</label>
+                <input class="form-input bill-input bill-input--nds" type="number" name="acc_points_nds_3"
+                  id="acc_points_nds_3" value="0" readonly>
+              </div>
+
+              <div class="form-item w-108">
+                <label for="acc_points_sum_3" class="form-label">Сумма с НДС</label>
+
+                <div class="form-inner">
+                  <input class="form-input bill-input bill-input--sum" type="number" name="acc_points_sum_3"
+                    id="acc_points_sum_3" value="0" readonly>
+                  <span class="form-symbol">₽</span>
+                </div>
+              </div>
+
+              <div class="form-item form-item--remove">
+                <button type="button" class="form-remove form-remove--bill" title="Удалить"></button>
+              </div>
+
+            </div>
+
+            <div class="form-line form-line--flex" id="add_bill">
+
+              <div class="form-item">
+                <a href="#" class="form-add js-add--bill">
+                  Добавить пункт
+                </a>
+              </div>
             </div>
           </div>
         </section>
@@ -371,8 +498,8 @@
                 </div>
                 <div class="form-line">
                   <div class="form-item">
-                    <label for="tax_rate" class="form-label">Расположение логотипа</label>
-                    <select class="form-select" name="tax_rate" id="tax_rate">
+                    <label for="logo_position" class="form-label">Расположение логотипа</label>
+                    <select class="form-select" name="logo_position" id="logo_position">
                       <option value="В центре" selected>В центре</option>
                       <option value="Сверху">Сверху</option>
                       <option value="Снизу">Снизу</option>
@@ -713,6 +840,7 @@
       </div>
     </form>
   </div>
+
 
   <script src="js/include/jquery.min.js"></script>
   <script src="./js/include/jquery.datetimepicker.full.min.js"></script>

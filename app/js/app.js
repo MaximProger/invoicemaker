@@ -32,19 +32,45 @@ $(document).ready(function () {
   // Валидация формы
   $("#bill_form").validate({
     rules: {
-      bill_number: {
-        number: true,
-      },
       seller_inn: {
+        required: true,
+        minlength: 10,
+      },
+      seller_kpp: {
+        minlength: 9,
+        maxlength: 9,
+      },
+      seller_bik: {
+        required: true,
+        minlength: 10,
+      },
+      seller_checking_account: {
+        required: true,
+        minlength: 10,
+      },
+      payer_inn: {
         required: true,
         minlength: 10,
       },
     },
     messages: {
-      bill_number: {
-        number: "Введите число",
-      },
       seller_inn: {
+        required: "Введите ИНН",
+        minlength: "Обязательно для заполнения, 10-12 цифр.",
+      },
+      seller_kpp: {
+        minlength: "Минимальная длина КПП 9 цифр.",
+        maxlength: "Максимальная длина КПП 9 цифр.",
+      },
+      seller_bik: {
+        required: "Введите БИК",
+        minlength: "Обязательно для заполнения, 10-12 цифр.",
+      },
+      seller_checking_account: {
+        required: "Введите Расчётный счёт",
+        minlength: "Обязательно для заполнения, 10-12 цифр.",
+      },
+      payer_inn: {
         required: "Введите ИНН",
         minlength: "Обязательно для заполнения, 10-12 цифр.",
       },
@@ -126,6 +152,82 @@ $(document).ready(function () {
       formRemovePopup.has(evt.target).length === 0
     ) {
       formRemovePopup.remove();
+    }
+  });
+
+  // Добавить пункт счета
+  $(".js-add--bill").click(function (evt) {
+    evt.preventDefault();
+
+    let billCount = $("#billList").children().length;
+
+    const billLine = `
+    <div class="form-line form-line--flex">
+
+    <div class="form-item w-427">
+      <label for="acc_points_name_${billCount}" class="form-label">${billCount}</label>
+      <input class="form-input" type="text" name="acc_points_name_${billCount}" id="acc_points_name_${billCount}">
+    </div>
+
+    <div class="form-item w-108">
+      <label for="acc_points_price_${billCount}" class="form-label">Цена</label>
+      <div class="form-inner">
+        <input class="form-input" type="number" name="acc_points_price_${billCount}" id="acc_points_price_${billCount}">
+        <span class="form-symbol">₽</span>
+      </div>
+    </div>
+
+    <div class="form-item w-88">
+      <label for="acc_points_count_${billCount}" class="form-label">Количество</label>
+      <input class="form-input" type="number" name="acc_points_count_${billCount}" id="acc_points_count_${billCount}">
+    </div>
+
+    <div class="form-item w-101">
+      <label for="acc_points_units_${billCount}" class="form-label">Ед. измерения</label>
+      <select class="form-select form-select--new" name="acc_points_units_${billCount}" id="acc_points_units_${billCount}">
+        <option value="кг">кг</option>
+        <option value="м2">м2</option>
+        <option value="м3">м3</option>
+        <option value="л">л</option>
+        <option value="м">м</option>
+        <option value="пар">пар</option>
+        <option value="г">г</option>
+        <option value="шт" selected>шт</option>
+      </select>
+    </div>
+
+    <div class="form-item w-88">
+      <label for="acc_points_nds_${billCount}" class="form-label">НДС</label>
+      <input class="form-input" type="number" name="acc_points_nds_${billCount}" id="acc_points_nds_${billCount}" value="0"
+        readonly>
+    </div>
+
+    <div class="form-item w-108">
+      <label for="acc_points_sum_${billCount}" class="form-label">Сумма с НДС</label>
+
+      <div class="form-inner">
+        <input class="form-input" type="number" name="acc_points_sum_${billCount}" id="acc_points_sum_${billCount}" value="0"
+          readonly>
+        <span class="form-symbol">₽</span>
+      </div>
+    </div>
+
+    <div class="form-item form-item--remove">
+      <button type="button" class="form-remove form-remove--bill" title="Удалить"></button>
+    </div>
+
+  </div>
+      `;
+
+    $("#add_bill").before(billLine);
+
+    if ($(".form-select--new").length > 1) {
+      $(".form-select--new").each(function () {
+        let $this = $(this).not(".nice-select");
+        $this.niceSelect();
+      });
+    } else {
+      $(".form-select--new").niceSelect();
     }
   });
 
@@ -314,6 +416,55 @@ $(document).ready(function () {
     const colorMenu = $("#colorMenu");
     if (!colorMenu.is(evt.target) && colorMenu.has(evt.target).length === 0) {
       colorMenu.removeClass("form-color__menu--active");
+    }
+  });
+
+  // Калькуляция счетов
+  // НДС = НБ × Нст / 100,
+  // Где: НБ — налоговая база (то есть сумма без НДС),
+  // Нст — ставка НДС: 20 процентов (до 01.01.2019 — 18) или 10 процентов.
+  $(document).on("input", ".bill-input", function () {
+    const tax_rate = +$("#tax_rate").val();
+    // выбран НДС
+    if (tax_rate) {
+      const formLine = $(this).parents(".form-line");
+      const price = formLine.find(".bill-input--price");
+      const count = formLine.find(".bill-input--count");
+      const nds = formLine.find(".bill-input--nds");
+      const sum = formLine.find(".bill-input--sum");
+
+      // Цена и количество заполнены
+      if (+price.val() && +count.val()) {
+        const ndsValue = (price.val() * count.val() * tax_rate) / 100;
+        const ndsWithSum = price.val() * count.val() + ndsValue;
+        nds.val(ndsValue);
+        sum.val(ndsWithSum);
+      } else {
+        nds.val(0);
+        sum.val(0);
+      }
+    }
+  });
+
+  $("#tax_rate").on("change", function () {
+    const tax_rate = +$(this).val();
+    if (tax_rate) {
+      $(".bill-line").each(function () {
+        const price = $(this).find(".bill-input--price");
+        const count = $(this).find(".bill-input--count");
+        const nds = $(this).find(".bill-input--nds");
+        const sum = $(this).find(".bill-input--sum");
+
+        if (+price.val() && +count.val()) {
+          const ndsValue = (price.val() * count.val() * tax_rate) / 100;
+          const ndsWithSum = price.val() * count.val() + ndsValue;
+          nds.val(ndsValue);
+          sum.val(ndsWithSum);
+        } else {
+          nds.val(0);
+          sum.val(0);
+        }
+      });
     }
   });
 });

@@ -1469,8 +1469,9 @@ body {
   width: 100%;
   height: auto;
   max-height: 235px;
+  height: 235px;
 
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .popup__controls {
