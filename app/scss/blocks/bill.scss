@@ -205,6 +205,12 @@
   width: 328px;
 }
 
+.bill-header {
+  .form-input + .error {
+    display: none !important;
+  }
+}
+
 @media (max-width: $tablet) {
   .bill-intro {
     flex-wrap: wrap;

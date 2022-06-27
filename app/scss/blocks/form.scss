@@ -1311,4 +1311,16 @@
   .form-remove__popup {
     right: -20px;
   }
+
+  .xdsoft_datetimepicker {
+    border-radius: 6px;
+  }
+
+  .form-input {
+    &--date {
+      &:focus {
+        border-radius: 6px;
+      }
+    }
+  }
 }
