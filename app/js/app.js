@@ -164,61 +164,71 @@ $(document).ready(function () {
     const billLine = `
     <div class="form-line bill-line form-line--flex">
 
-              <div class="form-item w-427">
-                <label for="acc_points_name_${billCount}" class="form-label">${billCount}</label>
-                <input class="form-input bill-input" type="text" name="acc_points_name_${billCount}" id="acc_points_name_${billCount}">
-              </div>
+    <div class="form-item w-427">
+      <label for="acc_points_name_${billCount}" class="form-label">${billCount}</label>
+      <input class="form-input bill-input" type="text" name="acc_points_name_${billCount}" id="acc_points_name_${billCount}">
+    </div>
 
-              <div class="form-item w-108">
-                <label for="acc_points_price_${billCount}" class="form-label">Цена</label>
-                <div class="form-inner">
-                  <input class="form-input bill-input bill-input--price" type="number" name="acc_points_price_${billCount}"
-                    id="acc_points_price_${billCount}">
-                  <span class="form-symbol">₽</span>
-                </div>
-              </div>
+    <div class="form-item w-108">
+      <label for="acc_points_price_${billCount}" class="form-label">Цена</label>
+      <div class="form-inner">
+        <input class="form-input bill-input bill-input--price" type="number" name="acc_points_price_${billCount}"
+          id="acc_points_price_${billCount}">
+        <span class="form-symbol">₽</span>
+      </div>
+    </div>
 
-              <div class="form-item w-88">
-                <label for="acc_points_count_${billCount}" class="form-label">Количество</label>
-                <input class="form-input bill-input bill-input--count" type="number" name="acc_points_count_${billCount}"
-                  id="acc_points_count_${billCount}">
-              </div>
+    <div class="form-item w-88">
+      <label for="acc_points_count_${billCount}" class="form-label">Количество</label>
+      <input class="form-input bill-input bill-input--count" type="number" name="acc_points_count_${billCount}"
+        id="acc_points_count_${billCount}">
+    </div>
 
-              <div class="form-item w-101">
-                <label for="acc_points_units_${billCount}" class="form-label">Ед. измерения</label>
-                <select class="form-select bill-select" name="acc_points_units_${billCount}" id="acc_points_units_${billCount}">
-                  <option value="кг">кг</option>
-                  <option value="м2">м2</option>
-                  <option value="м3">м3</option>
-                  <option value="л">л</option>
-                  <option value="м">м</option>
-                  <option value="пар">пар</option>
-                  <option value="г">г</option>
-                  <option value="шт" selected>шт</option>
-                </select>
-              </div>
+    <div class="form-item w-101">
+      <label for="acc_points_units_${billCount}" class="form-label">Ед. измерения</label>
+      <select class="form-select bill-select" name="acc_points_units_${billCount}" id="acc_points_units_${billCount}">
+        <option value="кг">кг</option>
+        <option value="м2">м2</option>
+        <option value="м3">м3</option>
+        <option value="л">л</option>
+        <option value="м">м</option>
+        <option value="пар">пар</option>
+        <option value="г">г</option>
+        <option value="шт" selected>шт</option>
+      </select>
+    </div>
 
-              <div class="form-item w-88">
-                <label for="acc_points_nds_${billCount}" class="form-label">НДС</label>
-                <input class="form-input bill-input bill-input--nds" type="number" name="acc_points_nds_${billCount}"
-                  id="acc_points_nds_${billCount}" value="0" readonly>
-              </div>
+    <div class="form-item form-item--nds w-88">
+      <label for="acc_points_nds_${billCount}" class="form-label">НДС</label>
+      <input class="form-input bill-input bill-input--nds" type="number" name="acc_points_nds_${billCount}"
+        id="acc_points_nds_${billCount}" value="0" readonly>
+    </div>
 
-              <div class="form-item w-108">
-                <label for="acc_points_sum_${billCount}" class="form-label">Сумма с НДС</label>
+    <div class="form-item form-item--nds w-108">
+      <label for="acc_points_sum_${billCount}" class="form-label">Сумма с НДС</label>
 
-                <div class="form-inner">
-                  <input class="form-input bill-input bill-input--sum" type="number" name="acc_points_sum_${billCount}"
-                    id="acc_points_sum_${billCount}" value="0" readonly>
-                  <span class="form-symbol">₽</span>
-                </div>
-              </div>
+      <div class="form-inner">
+        <input class="form-input bill-input bill-input--sum" type="number" name="acc_points_sum_${billCount}"
+          id="acc_points_sum_${billCount}" value="0" readonly>
+        <span class="form-symbol">₽</span>
+      </div>
+    </div>
 
-              <div class="form-item form-item--remove">
-                <button type="button" class="form-remove form-remove--bill" title="Удалить"></button>
-              </div>
+    <div class="form-item form-item--no-nds w-108">
+      <label for="acc_points_sum_clean_${billCount}" class="form-label">Сумма</label>
 
-            </div>
+      <div class="form-inner">
+        <input class="form-input bill-input bill-input--sum_clean" type="number" name="acc_points_sum_clean_${billCount}"
+          id="acc_points_sum_clean_${billCount}" value="0" readonly>
+        <span class="form-symbol">₽</span>
+      </div>
+    </div>
+
+    <div class="form-item form-item--remove">
+      <button type="button" class="form-remove form-remove--bill" title="Удалить"></button>
+    </div>
+
+  </div>
       `;
 
     $("#add_bill").before(billLine);
@@ -442,38 +452,31 @@ $(document).ready(function () {
   // НДС = НБ × Нст / 100,
   // Где: НБ — налоговая база (то есть сумма без НДС),
   // Нст — ставка НДС: 20 процентов (до 01.01.2019 — 18) или 10 процентов.
+
+  // инпуты расчета
   $(document).on("input", ".bill-input", function () {
-    const tax_rate = +$("#tax_rate").val();
-    // выбран НДС
-    if (tax_rate) {
+    const tax_rate = $("#tax_rate").val();
+
+    if (tax_rate && tax_rate != "0") {
       const formLine = $(this).parents(".form-line");
       const price = formLine.find(".bill-input--price");
       const count = formLine.find(".bill-input--count");
-      const nds = formLine.find(".bill-input--nds");
-      const sum = formLine.find(".bill-input--sum");
 
-      // Цена и количество заполнены
-      if (+price.val() && +count.val()) {
-        const ndsValue = (price.val() * count.val() * tax_rate) / 100;
-        const ndsWithSum = price.val() * count.val() + ndsValue;
-        nds.val(ndsValue);
-        sum.val(ndsWithSum);
+      if (tax_rate == "no_nds") {
+        // без НДС
+        const sum_clean = formLine.find(".bill-input--sum_clean");
+        if (+price.val() && +count.val()) {
+          const value = price.val() * count.val();
+          sum_clean.val(value);
+        } else {
+          sum_clean.val(0);
+        }
       } else {
-        nds.val(0);
-        sum.val(0);
-      }
-    }
-  });
+        // выбран НДС
+        const nds = formLine.find(".bill-input--nds");
+        const sum = formLine.find(".bill-input--sum");
 
-  $("#tax_rate").on("change", function () {
-    const tax_rate = +$(this).val();
-    if (tax_rate) {
-      $(".bill-line").each(function () {
-        const price = $(this).find(".bill-input--price");
-        const count = $(this).find(".bill-input--count");
-        const nds = $(this).find(".bill-input--nds");
-        const sum = $(this).find(".bill-input--sum");
-
+        // Цена и количество заполнены
         if (+price.val() && +count.val()) {
           const ndsValue = (price.val() * count.val() * tax_rate) / 100;
           const ndsWithSum = price.val() * count.val() + ndsValue;
@@ -483,7 +486,48 @@ $(document).ready(function () {
           nds.val(0);
           sum.val(0);
         }
-      });
+      }
+    }
+  });
+
+  // селект выбора НДС
+  $("#tax_rate").on("change", function () {
+    const tax_rate = $(this).val();
+    if (tax_rate && tax_rate != "0") {
+      if (tax_rate == "no_nds") {
+        // без НДС
+        $("#billList").addClass("form__wrapper--no-nds");
+
+        $(".bill-line").each(function () {
+          const price = $(this).find(".bill-input--price");
+          const count = $(this).find(".bill-input--count");
+          const sum_clean = $(this).find(".bill-input--sum_clean");
+          if (+price.val() && +count.val()) {
+            const value = price.val() * count.val();
+            sum_clean.val(value);
+          } else {
+            sum_clean.val(0);
+          }
+        });
+      } else {
+        // с ндс
+        $("#billList").removeClass("form__wrapper--no-nds");
+        $(".bill-line").each(function () {
+          const price = $(this).find(".bill-input--price");
+          const count = $(this).find(".bill-input--count");
+          const nds = $(this).find(".bill-input--nds");
+          const sum = $(this).find(".bill-input--sum");
+          if (+price.val() && +count.val()) {
+            const ndsValue = (price.val() * count.val() * tax_rate) / 100;
+            const ndsWithSum = price.val() * count.val() + ndsValue;
+            nds.val(ndsValue);
+            sum.val(ndsWithSum);
+          } else {
+            nds.val(0);
+            sum.val(0);
+          }
+        });
+      }
     }
   });
 });

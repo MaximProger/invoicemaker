@@ -131,7 +131,7 @@
                 <label for="tax_rate" class="form-label">Налоговая ставка</label>
                 <select class="form-select" name="tax_rate" id="tax_rate">
                   <option value="" disabled selected>Выберите категорию</option>
-                  <option value="0">Без НДС</option>
+                  <option value="no_nds">Без НДС</option>
                   <option value="10">НДС 10%</option>
                   <option value="18">НДС 18%</option>
                   <option value="20">НДС 20%</option>
@@ -178,13 +178,13 @@
                 </select>
               </div>
 
-              <div class="form-item w-88">
+              <div class="form-item form-item--nds w-88">
                 <label for="acc_points_nds_1" class="form-label">НДС</label>
                 <input class="form-input bill-input bill-input--nds" type="number" name="acc_points_nds_1"
                   id="acc_points_nds_1" value="0" readonly>
               </div>
 
-              <div class="form-item w-108">
+              <div class="form-item form-item--nds w-108">
                 <label for="acc_points_sum_1" class="form-label">Сумма с НДС</label>
 
                 <div class="form-inner">
@@ -194,11 +194,22 @@
                 </div>
               </div>
 
+              <div class="form-item form-item--no-nds w-108">
+                <label for="acc_points_sum_clean_1" class="form-label">Сумма</label>
+
+                <div class="form-inner">
+                  <input class="form-input bill-input bill-input--sum_clean" type="number" name="acc_points_sum_clean_1"
+                    id="acc_points_sum_clean_1" value="0" readonly>
+                  <span class="form-symbol">₽</span>
+                </div>
+              </div>
+
               <div class="form-item form-item--remove">
                 <button type="button" class="form-remove form-remove--bill" title="Удалить"></button>
               </div>
 
             </div>
+
             <div class="form-line bill-line form-line--flex">
 
               <div class="form-item w-427">
@@ -235,13 +246,13 @@
                 </select>
               </div>
 
-              <div class="form-item w-88">
+              <div class="form-item form-item--nds w-88">
                 <label for="acc_points_nds_2" class="form-label">НДС</label>
                 <input class="form-input bill-input bill-input--nds" type="number" name="acc_points_nds_2"
                   id="acc_points_nds_2" value="0" readonly>
               </div>
 
-              <div class="form-item w-108">
+              <div class="form-item form-item--nds w-108">
                 <label for="acc_points_sum_2" class="form-label">Сумма с НДС</label>
 
                 <div class="form-inner">
@@ -251,11 +262,22 @@
                 </div>
               </div>
 
+              <div class="form-item form-item--no-nds w-108">
+                <label for="acc_points_sum_clean_2" class="form-label">Сумма</label>
+
+                <div class="form-inner">
+                  <input class="form-input bill-input bill-input--sum_clean" type="number" name="acc_points_sum_clean_2"
+                    id="acc_points_sum_clean_2" value="0" readonly>
+                  <span class="form-symbol">₽</span>
+                </div>
+              </div>
+
               <div class="form-item form-item--remove">
                 <button type="button" class="form-remove form-remove--bill" title="Удалить"></button>
               </div>
 
             </div>
+
             <div class="form-line bill-line form-line--flex">
 
               <div class="form-item w-427">
@@ -292,13 +314,13 @@
                 </select>
               </div>
 
-              <div class="form-item w-88">
+              <div class="form-item form-item--nds w-88">
                 <label for="acc_points_nds_3" class="form-label">НДС</label>
                 <input class="form-input bill-input bill-input--nds" type="number" name="acc_points_nds_3"
                   id="acc_points_nds_3" value="0" readonly>
               </div>
 
-              <div class="form-item w-108">
+              <div class="form-item form-item--nds w-108">
                 <label for="acc_points_sum_3" class="form-label">Сумма с НДС</label>
 
                 <div class="form-inner">
@@ -308,11 +330,22 @@
                 </div>
               </div>
 
+              <div class="form-item form-item--no-nds w-108">
+                <label for="acc_points_sum_clean_3" class="form-label">Сумма</label>
+
+                <div class="form-inner">
+                  <input class="form-input bill-input bill-input--sum_clean" type="number" name="acc_points_sum_clean_3"
+                    id="acc_points_sum_clean_3" value="0" readonly>
+                  <span class="form-symbol">₽</span>
+                </div>
+              </div>
+
               <div class="form-item form-item--remove">
                 <button type="button" class="form-remove form-remove--bill" title="Удалить"></button>
               </div>
 
             </div>
+
 
             <div class="form-line form-line--flex" id="add_bill">
 

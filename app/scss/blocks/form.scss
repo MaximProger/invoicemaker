@@ -48,6 +48,10 @@
 
     width: 13px;
   }
+
+  &--no-nds {
+    display: none;
+  }
 }
 
 .form-label {
@@ -1162,6 +1166,20 @@
   box-shadow: none !important;
 }
 
+.form__wrapper--no-nds {
+  .form-item--nds {
+    display: none;
+  }
+
+  .form-item--no-nds {
+    display: block;
+  }
+
+  .w-427 {
+    width: 531px;
+  }
+}
+
 .w-88 {
   width: 88px;
 }
@@ -1172,6 +1190,10 @@
 
 .w-108 {
   width: 108px;
+}
+
+.w-212 {
+  width: 212px;
 }
 
 .w-234 {
@@ -1321,6 +1343,13 @@
       &:focus {
         border-radius: 6px;
       }
+    }
+  }
+
+  .form__wrapper--no-nds {
+    .form-item--remove {
+      justify-content: flex-end;
+      width: 100%;
     }
   }
 }
