@@ -203,7 +203,7 @@
             <h2 class="bill-section__title">Договор</h2>
 
 
-            <label class="form-switch">
+            <label for="contract_switch" class="form-switch">
               <input class="form-switch__checkbox" type="checkbox" id="contract_switch">
               <span class="form-switch__round"></span>
             </label>
@@ -279,7 +279,7 @@
             <h2 class="bill-section__title">Подписи сторон</h2>
           </div>
 
-          <div class="form__wrapper">
+          <div class="form__wrapper" id="side_list">
             <div class="form-line form-line--flex">
               <div class="form-item w-336">
                 <label for="job_1" class="form-label">Должность</label>
@@ -293,7 +293,7 @@
                 <div class="form-file__wrapper">
                   <label for="file_1" class="form-file__btn"></label>
                   <label for="file_1" class="form-file__label">
-                    <input class="form-file__input" type="file" name="file_1" id="file_1">
+                    <input class="form-file__input form-file__input--signature" type="file" name="file_1" id="file_1">
                     <span class="form-file__text">Добавить подпись</span>
                   </label>
                 </div>
@@ -303,28 +303,415 @@
                 <button type="button" class="form-remove form-remove--side" title="Удалить"></button>
               </div>
             </div>
+            <div class="form-line form-line--flex">
+              <div class="form-item w-336">
+                <label for="job_2" class="form-label">Должность</label>
+                <input class="form-input" type="text" name="job_2" id="job_2">
+              </div>
+              <div class="form-item w-336">
+                <label for="fio_2" class="form-label">ФИО</label>
+                <input class="form-input" type="text" name="fio_2" id="fio_2">
+              </div>
+              <div class="form-item form-file w-266">
+                <div class="form-file__wrapper">
+                  <label for="file_2" class="form-file__btn"></label>
+                  <label for="file_2" class="form-file__label">
+                    <input class="form-file__input form-file__input--signature" type="file" name="file_2" id="file_2">
+                    <span class="form-file__text">Добавить подпись</span>
+                  </label>
+                </div>
+
+              </div>
+              <div class="form-item form-item--remove">
+                <button type="button" class="form-remove form-remove--side" title="Удалить"></button>
+              </div>
+            </div>
+            <div class="form-line form-line--flex" id="add_side">
+
+              <div class="form-item">
+                <a href="#" class="form-add js-add--side">
+                  Добавить сторону
+                </a>
+              </div>
+            </div>
+
+            <div class="form-line form-line--stamp form-line--flex">
+              <div class="form-item">
+                <div class="form-file__wrapper">
+                  <label for="stamp" class="form-file__btn"></label>
+                  <label for="stamp" class="form-file__label">
+                    <input class="form-file__input form-file__input--stamp" type="file" name="stamp" id="stamp">
+                    <span class="form-file__text">Добавить печать</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
           </div>
         </section>
 
+        <div class="bill-row">
+          <div class="bill-row__col">
+            <section class="bill-row__section">
+              <div class="bill-row__header">
+                <h3 class="bill-row__title">Логотип компании</h3>
+              </div>
 
-        <button>Send</button>
+              <div class="form__wrapper">
+                <div class="form-line form-line--flex">
+                  <div class="form-item">
+                    <div class="form-file__wrapper">
+                      <label for="logo" class="form-file__btn"></label>
+                      <label for="logo" class="form-file__label">
+                        <input class="form-file__input form-file__input--logo" type="file" name="logo" id="logo">
+                        <span class="form-file__text">Добавить логотип</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-line">
+                  <div class="form-item">
+                    <label for="tax_rate" class="form-label">Расположение логотипа</label>
+                    <select class="form-select" name="tax_rate" id="tax_rate">
+                      <option value="В центре" selected>В центре</option>
+                      <option value="Сверху">Сверху</option>
+                      <option value="Снизу">Снизу</option>
+                      <option value="Слева">Слева</option>
+                      <option value="Справа">Справа</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
 
+            </section>
+          </div>
+          <div class="bill-row__col">
+            <section class="bill-row__section">
+              <div class="bill-row__header">
+                <h3 class="bill-row__title">Добавить предупреждение</h3>
+                <label for="alert_switch" class="form-switch">
+                  <input class="form-switch__checkbox" type="checkbox" id="alert_switch">
+                  <span class="form-switch__round"></span>
+                </label>
+              </div>
+              <div class="form__wrapper form__wrapper--hidden">
+                <div class="form-line">
+                  <div class="form-item">
+                    <label for="text" class="form-label">Текст</label>
+                    <input class="form-input" type="text" name="text" id="text">
+                  </div>
+                </div>
+                <div class="form-line">
+                  <div class="form-item form-color">
+                    <span class="form-label">Цвет предупреждения</span>
+                    <button type="button" class="form-color__wrapper" id="colorBtn">
+                      <span class="form-color__value" style="background-color: #EB5757;"></span>
+                    </button>
+                    <div class="form-color__menu" id="colorMenu">
+                      <div class="form-color__inner">
+
+                        <div class="form-color__item">
+                          <input type="radio" name="color" class="form-color__radio" value="EB5757" id="EB5757" checked>
+                          <label for="EB5757" class="form-color__label form-color__label--EB5757">
+                          </label>
+                        </div>
+
+                        <div class="form-color__item">
+                          <input type="radio" name="color" class="form-color__radio" value="F09837" id="F09837">
+                          <label for="F09837" class="form-color__label form-color__label--F09837">
+                          </label>
+                        </div>
+
+                        <div class="form-color__item">
+                          <input type="radio" name="color" class="form-color__radio" value="FEFB53" id="FEFB53">
+                          <label for="FEFB53" class="form-color__label form-color__label--FEFB53">
+                          </label>
+                        </div>
+
+                        <div class="form-color__item">
+                          <input type="radio" name="color" class="form-color__radio" value="72F54A" id="72F54A">
+                          <label for="72F54A" class="form-color__label form-color__label--72F54A">
+                          </label>
+                        </div>
+
+                        <div class="form-color__item">
+                          <input type="radio" name="color" class="form-color__radio" value="74F9FD" id="74F9FD">
+                          <label for="74F9FD" class="form-color__label form-color__label--74F9FD">
+                          </label>
+                        </div>
+                        <div class="form-color__item">
+                          <input type="radio" name="color" class="form-color__radio" value="882B8D" id="882B8D">
+                          <label for="882B8D" class="form-color__label form-color__label--882B8D">
+                          </label>
+                        </div>
+                        <div class="form-color__item">
+                          <input type="radio" name="color" class="form-color__radio" value="FFFFFF" id="FFFFFF">
+                          <label for="FFFFFF" class="form-color__label form-color__label--FFFFFF">
+                          </label>
+                        </div>
+                        <div class="form-color__item">
+                          <input type="radio" name="color" class="form-color__radio" value="000000" id="000000">
+                          <label for="000000" class="form-color__label form-color__label--000000">
+                          </label>
+                        </div>
+                        <div class="form-color__item">
+                          <input type="radio" name="color" class="form-color__radio" value="133648" id="133648">
+                          <label for="133648" class="form-color__label form-color__label--133648">
+                          </label>
+                        </div>
+                        <div class="form-color__item">
+                          <input type="radio" name="color" class="form-color__radio" value="0F0639" id="0F0639">
+                          <label for="0F0639" class="form-color__label form-color__label--0F0639">
+                          </label>
+                        </div>
+                        <div class="form-color__item">
+                          <input type="radio" name="color" class="form-color__radio" value="370C1B" id="370C1B">
+                          <label for="370C1B" class="form-color__label form-color__label--370C1B">
+                          </label>
+                        </div>
+                        <div class="form-color__item">
+                          <input type="radio" name="color" class="form-color__radio" value="532009" id="532009">
+                          <label for="532009" class="form-color__label form-color__label--532009">
+                          </label>
+                        </div>
+                        <div class="form-color__item">
+                          <input type="radio" name="color" class="form-color__radio" value="54230d" id="54230d">
+                          <label for="54230d" class="form-color__label form-color__label--54230d">
+                          </label>
+                        </div>
+                        <div class="form-color__item">
+                          <input type="radio" name="color" class="form-color__radio" value="513E0F" id="513E0F">
+                          <label for="513E0F" class="form-color__label form-color__label--513E0F">
+                          </label>
+                        </div>
+                        <div class="form-color__item">
+                          <input type="radio" name="color" class="form-color__radio" value="505517" id="505517">
+                          <label for="505517" class="form-color__label form-color__label--505517">
+                          </label>
+                        </div>
+                        <div class="form-color__item">
+                          <input type="radio" name="color" class="form-color__radio" value="2B3D16" id="2B3D16">
+                          <label for="2B3D16" class="form-color__label form-color__label--2B3D16">
+                          </label>
+                        </div>
+                        <div class="form-color__item">
+                          <input type="radio" name="color" class="form-color__radio" value="2E6C8C" id="2E6C8C">
+                          <label for="2E6C8C" class="form-color__label form-color__label--2E6C8C">
+                          </label>
+                        </div>
+                        <div class="form-color__item">
+                          <input type="radio" name="color" class="form-color__radio" value="281472" id="281472">
+                          <label for="281472" class="form-color__label form-color__label--281472">
+                          </label>
+                        </div>
+                        <div class="form-color__item">
+                          <input type="radio" name="color" class="form-color__radio" value="591D78" id="591D78">
+                          <label for="591D78" class="form-color__label form-color__label--591D78">
+                          </label>
+                        </div>
+                        <div class="form-color__item">
+                          <input type="radio" name="color" class="form-color__radio" value="A62C17" id="A62C17">
+                          <label for="A62C17" class="form-color__label form-color__label--A62C17">
+                          </label>
+                        </div>
+                        <div class="form-color__item">
+                          <input type="radio" name="color" class="form-color__radio" value="A0451A" id="A0451A">
+                          <label for="A0451A" class="form-color__label form-color__label--A0451A">
+                          </label>
+                        </div>
+                        <div class="form-color__item">
+                          <input type="radio" name="color" class="form-color__radio" value="A07D28" id="A07D28">
+                          <label for="A07D28" class="form-color__label form-color__label--A07D28">
+                          </label>
+                        </div>
+                        <div class="form-color__item">
+                          <input type="radio" name="color" class="form-color__radio" value="9CA536" id="9CA536">
+                          <label for="9CA536" class="form-color__label form-color__label--9CA536">
+                          </label>
+                        </div>
+                        <div class="form-color__item">
+                          <input type="radio" name="color" class="form-color__radio" value="587934" id="587934">
+                          <label for="587934" class="form-color__label form-color__label--587934">
+                          </label>
+                        </div>
+                        <div class="form-color__item">
+                          <input type="radio" name="color" class="form-color__radio" value="48A0D3" id="48A0D3">
+                          <label for="48A0D3" class="form-color__label form-color__label--48A0D3">
+                          </label>
+                        </div>
+                        <div class="form-color__item">
+                          <input type="radio" name="color" class="form-color__radio" value="4724AC" id="4724AC">
+                          <label for="4724AC" class="form-color__label form-color__label--4724AC">
+                          </label>
+                        </div>
+                        <div class="form-color__item">
+                          <input type="radio" name="color" class="form-color__radio" value="8D32B6" id="8D32B6">
+                          <label for="8D32B6" class="form-color__label form-color__label--8D32B6">
+                          </label>
+                        </div>
+                        <div class="form-color__item">
+                          <input type="radio" name="color" class="form-color__radio" value="EB522E" id="EB522E">
+                          <label for="EB522E" class="form-color__label form-color__label--EB522E">
+                          </label>
+                        </div>
+                        <div class="form-color__item">
+                          <input type="radio" name="color" class="form-color__radio" value="ED742E" id="ED742E">
+                          <label for="ED742E" class="form-color__label form-color__label--ED742E">
+                          </label>
+                        </div>
+                        <div class="form-color__item">
+                          <input type="radio" name="color" class="form-color__radio" value="F3AE3D" id="F3AE3D">
+                          <label for="F3AE3D" class="form-color__label form-color__label--F3AE3D">
+                          </label>
+                        </div>
+                        <div class="form-color__item">
+                          <input type="radio" name="color" class="form-color__radio" value="DCEB5C" id="DCEB5C">
+                          <label for="DCEB5C" class="form-color__label form-color__label--DCEB5C">
+                          </label>
+                        </div>
+                        <div class="form-color__item">
+                          <input type="radio" name="color" class="form-color__radio" value="86B953" id="86B953">
+                          <label for="86B953" class="form-color__label form-color__label--86B953">
+                          </label>
+                        </div>
+                        <div class="form-color__item">
+                          <input type="radio" name="color" class="form-color__radio" value="79D3F9" id="79D3F9">
+                          <label for="79D3F9" class="form-color__label form-color__label--79D3F9">
+                          </label>
+                        </div>
+                        <div class="form-color__item">
+                          <input type="radio" name="color" class="form-color__radio" value="7F51F5" id="7F51F5">
+                          <label for="7F51F5" class="form-color__label form-color__label--7F51F5">
+                          </label>
+                        </div>
+                        <div class="form-color__item">
+                          <input type="radio" name="color" class="form-color__radio" value="C45FF6" id="C45FF6">
+                          <label for="C45FF6" class="form-color__label form-color__label--C45FF6">
+                          </label>
+                        </div>
+                        <div class="form-color__item">
+                          <input type="radio" name="color" class="form-color__radio" value="F09286" id="F09286">
+                          <label for="F09286" class="form-color__label form-color__label--F09286">
+                          </label>
+                        </div>
+                        <div class="form-color__item">
+                          <input type="radio" name="color" class="form-color__radio" value="F2A984" id="F2A984">
+                          <label for="F2A984" class="form-color__label form-color__label--F2A984">
+                          </label>
+                        </div>
+                        <div class="form-color__item">
+                          <input type="radio" name="color" class="form-color__radio" value="F9DA85" id="F9DA85">
+                          <label for="F9DA85" class="form-color__label form-color__label--F9DA85">
+                          </label>
+                        </div>
+                        <div class="form-color__item">
+                          <input type="radio" name="color" class="form-color__radio" value="ECF39B" id="ECF39B">
+                          <label for="ECF39B" class="form-color__label form-color__label--ECF39B">
+                          </label>
+                        </div>
+                        <div class="form-color__item">
+                          <input type="radio" name="color" class="form-color__radio" value="BADC94" id="BADC94">
+                          <label for="BADC94" class="form-color__label form-color__label--BADC94">
+                          </label>
+                        </div>
+                        <div class="form-color__item">
+                          <input type="radio" name="color" class="form-color__radio" value="D2EFFD" id="D2EFFD">
+                          <label for="D2EFFD" class="form-color__label form-color__label--D2EFFD">
+                          </label>
+                        </div>
+                        <div class="form-color__item">
+                          <input type="radio" name="color" class="form-color__radio" value="D6CAFA" id="D6CAFA">
+                          <label for="D6CAFA" class="form-color__label form-color__label--D6CAFA">
+                          </label>
+                        </div>
+                        <div class="form-color__item">
+                          <input type="radio" name="color" class="form-color__radio" value="F3D4E0" id="F3D4E0">
+                          <label for="F3D4E0" class="form-color__label form-color__label--F3D4E0">
+                          </label>
+                        </div>
+                        <div class="form-color__item">
+                          <input type="radio" name="color" class="form-color__radio" value="FAE3D8" id="FAE3D8">
+                          <label for="FAE3D8" class="form-color__label form-color__label--FAE3D8">
+                          </label>
+                        </div>
+                        <div class="form-color__item">
+                          <input type="radio" name="color" class="form-color__radio" value="FCEDD7" id="FCEDD7">
+                          <label for="FCEDD7" class="form-color__label form-color__label--FCEDD7">
+                          </label>
+                        </div>
+                        <div class="form-color__item">
+                          <input type="radio" name="color" class="form-color__radio" value="FDF2D8" id="FDF2D8">
+                          <label for="FDF2D8" class="form-color__label form-color__label--FDF2D8">
+                          </label>
+                        </div>
+                        <div class="form-color__item">
+                          <input type="radio" name="color" class="form-color__radio" value="F8FADE" id="F8FADE">
+                          <label for="F8FADE" class="form-color__label form-color__label--F8FADE">
+                          </label>
+                        </div>
+                        <div class="form-color__item">
+                          <input type="radio" name="color" class="form-color__radio" value="E2EDD6" id="E2EDD6">
+                          <label for="E2EDD6" class="form-color__label form-color__label--E2EDD6">
+                          </label>
+                        </div>
+                      </div>
+
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </section>
+          </div>
+        </div>
+
+        <div class="bill-footer">
+          <div class="bill-footer__right">
+            <div class="form-item form-radio">
+              <span class="form-label">Формат документа</span>
+              <div class="form-radio__wrapper">
+                <div class="form-radio__item">
+                  <input class="form-radio__input" id="pdf" type="radio" name="format" value="pdf" checked>
+                  <label class="form-radio__label" for="pdf">PDF</label>
+                </div>
+
+                <div class="form-radio__item">
+                  <input class="form-radio__input" id="jpeg" type="radio" name="format" value="jpeg">
+                  <label class="form-radio__label" for="jpeg">JPEG</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="bill-footer__left">
+            <button type="submit" class="btn bill-footer__submit">Сформировать счёт</button>
+          </div>
+        </div>
       </form>
     </div>
   </main>
 
-  <a data-fancybox href="#hidden">Открыть Fancybox (Inline)</a>
-
-  <div style="display: none; width: 500px;" id="hidden">
-    <h2>Контент из скрытого div</h2>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dignissim
-      vulputate eros.
-    </p>
-    <p>
-      Donec hendrerit efficitur ex vitae euismod. Maecenas ut leo vitae ipsum dictum
-      cursus vel vitae nulla.
-    </p>
+  <div class="popup" id="add_image" style="display: none;">
+    <form class="popup__form">
+      <div class="popup__title"></div>
+      <p class="popup__text"></p>
+      <div class="popup__placeholder">
+      </div>
+      <div class="popup__controls">
+        <div class="form-item popup__item">
+          <label for="scale" class="form-label">Масштаб</label>
+          <input class="form-range" type="range" name="scale" id="scale" value="0">
+        </div>
+        <div class="form-item popup__item">
+          <label for="incline" class="form-label">Наклон</label>
+          <input class="form-range" type="range" name="incline" id="incline" value="0">
+        </div>
+      </div>
+      <div class="popup__btns">
+        <button type="button" class="popup__btn" data-fancybox-close>Отмена</button>
+        <button type="submit" class="popup__btn popup__submit popup__btn--blue">Выбрать</button>
+      </div>
+    </form>
   </div>
 
   <script src="js/include/jquery.min.js"></script>
