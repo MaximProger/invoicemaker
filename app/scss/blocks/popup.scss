@@ -137,8 +137,8 @@
   transition: all 0.2s linear;
   cursor: pointer;
 
-  border: none;
   background: #e5ebf1;
+  border: 1px solid #e5ebf1;
   border-radius: 4px;
   color: #55677d;
 
@@ -148,15 +148,18 @@
 
   &:hover {
     background: #1d67ab;
+    border-color: #1d67ab;
     color: #ffffff;
   }
 
   &--blue {
     background: #1d67ab;
+    border-color: #1d67ab;
     color: #ffffff;
 
     &:hover {
       background: #e5ebf1;
+      border-color: #e5ebf1;
       color: #55677d;
     }
   }

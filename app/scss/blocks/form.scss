@@ -119,6 +119,18 @@
 
   color: #000000;
 
+  &::placeholder {
+    font-family: "SF Pro Text";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+
+    letter-spacing: -0.24px;
+
+    color: rgba($color: #5a6c74, $alpha: 0.7);
+  }
+
   &--date {
     &:focus {
       background: #f8f8f8;
