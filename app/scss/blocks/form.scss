@@ -1194,6 +1194,10 @@
   width: 440px;
 }
 
+.bill-input + .error {
+  display: none !important;
+}
+
 @media (max-width: $tablet) {
   .bill-line {
     flex-wrap: wrap;

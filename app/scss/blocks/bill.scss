@@ -251,12 +251,8 @@
 
   .bill-header__row {
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
 
-    width: 100%;
-  }
-
-  .bill-header__col {
     width: 100%;
   }
 
@@ -264,7 +260,10 @@
     font-size: 16px;
     line-height: 1.2;
 
+    width: 228px;
     margin: 13px 0;
+
+    text-align: center;
   }
 
   .bill-intro__col {
