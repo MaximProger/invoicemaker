@@ -155,11 +155,11 @@ $(document).ready(function () {
     }
   });
 
+  let billCount = $("#billList").children().length;
+
   // Добавить пункт счета
   $(".js-add--bill").click(function (evt) {
     evt.preventDefault();
-
-    let billCount = $("#billList").children().length;
 
     const billLine = `
     <div class="form-line bill-line form-line--flex">
@@ -223,6 +223,8 @@ $(document).ready(function () {
 
     $("#add_bill").before(billLine);
 
+    billCount++;
+
     if ($(".form-select--new").length > 1) {
       $(".form-select--new").each(function () {
         let $this = $(this).not(".nice-select");
@@ -233,11 +235,11 @@ $(document).ready(function () {
     }
   });
 
+  let contractsCount = $("#contract_list").children().length;
+
   // Добавить пункт контракта
   $(".js-add--contract").click(function (evt) {
     evt.preventDefault();
-
-    let contractsCount = $("#contract_list").children().length;
 
     const contractLine = `
     <div class="form-line form-line--flex">
@@ -254,6 +256,8 @@ $(document).ready(function () {
     `;
 
     $("#add_contact").before(contractLine);
+
+    contractsCount++;
   });
 
   // Показать/скрыть форму договора
@@ -366,10 +370,10 @@ $(document).ready(function () {
   }
 
   // Добавить сторону
+  let sideCount = $("#side_list").children().length;
+
   $(".js-add--side").click(function (evt) {
     evt.preventDefault();
-
-    let sideCount = $("#side_list").children().length;
 
     const sideLine = `
     <div class="form-line side-line form-line--flex">
@@ -398,6 +402,8 @@ $(document).ready(function () {
     `;
 
     $("#add_side").before(sideLine);
+
+    sideCount++;
   });
 
   // добавить предупреждение
