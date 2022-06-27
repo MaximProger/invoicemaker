@@ -112,6 +112,17 @@ body {
   }
 }
 
+@media (max-width: $mobile) {
+  .main {
+    padding: 26px 0;
+  }
+
+  .container {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
 @import "blocks/bill";
 @import "blocks/form";
 @import "blocks/popup";

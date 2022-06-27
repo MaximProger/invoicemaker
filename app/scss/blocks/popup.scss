@@ -8,6 +8,7 @@
 
   padding: 24px;
   max-width: 448px;
+  width: 100%;
 
   cursor: auto !important;
 
@@ -175,5 +176,29 @@
     margin-bottom: 12px;
 
     color: #5a6c74;
+  }
+}
+
+@media (max-width: 767px) {
+  .popup {
+    padding: 20px;
+
+    .fancybox-close-small {
+      right: 5px;
+      top: 5px;
+    }
+  }
+
+  .popup__controls {
+    flex-wrap: wrap;
+  }
+
+  .popup__item {
+    width: 100%;
+    margin-bottom: 14px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 }

@@ -305,13 +305,24 @@ $(document).ready(function () {
         );
       }
 
-      $.fancybox.open({
-        src: "#add_image",
-      });
+      if (
+        $(this).hasClass("form-file__input--signature") ||
+        $(this).hasClass("form-file__input--stamp")
+      ) {
+        $.fancybox.open({
+          src: "#add_image",
+        });
+      } else {
+        const formFileWrapper = $(this).parents(".form-file__wrapper");
+        const formFileText = formFileWrapper.find(".form-file__text");
+
+        formFileWrapper.addClass("form-file__wrapper--done");
+        formFileText.text(fileName);
+      }
     }
   });
 
-  $(document).on("click", ".popup--signature .popup__submit", function (evt) {
+  $(document).on("click", ".popup .popup__submit", function (evt) {
     evt.preventDefault();
 
     const popup = $(this).parents(".popup");
@@ -361,7 +372,7 @@ $(document).ready(function () {
     let sideCount = $("#side_list").children().length;
 
     const sideLine = `
-    <div class="form-line form-line--flex">
+    <div class="form-line side-line form-line--flex">
     <div class="form-item w-336">
       <label for="job_${sideCount}" class="form-label">Должность</label>
       <input class="form-input" type="text" name="job_${sideCount}" id="job_${sideCount}">

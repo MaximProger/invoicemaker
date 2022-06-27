@@ -204,3 +204,92 @@
 .bill-footer__submit {
   width: 328px;
 }
+
+@media (max-width: $tablet) {
+  .bill-intro {
+    flex-wrap: wrap;
+
+    margin-bottom: 0;
+  }
+
+  .bill-intro__col {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+
+  .bill-row {
+    flex-wrap: wrap;
+
+    margin-bottom: 0;
+  }
+
+  .bill-row__col {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+
+  .bill-footer {
+    flex-direction: column;
+  }
+
+  .bill-footer__right {
+    margin-bottom: 26px;
+  }
+}
+
+@media (max-width: $mobile) {
+  .bill-header {
+    flex-wrap: wrap;
+  }
+
+  .bill-title {
+    font-size: 24px;
+    line-height: 1.2;
+
+    margin-bottom: 26px;
+  }
+
+  .bill-header__row {
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+  }
+
+  .bill-header__col {
+    width: 100%;
+  }
+
+  .bill-header__text {
+    font-size: 16px;
+    line-height: 1.2;
+
+    margin: 13px 0;
+  }
+
+  .bill-intro__col {
+    padding: 20px;
+  }
+
+  .bill-section {
+    padding: 20px;
+  }
+
+  .bill-row__section {
+    padding: 20px;
+  }
+
+  .bill-footer {
+    padding: 20px;
+  }
+
+  .bill-footer__right,
+  .bill-footer__left {
+    width: 100%;
+  }
+
+  .bill-footer__submit {
+    width: 100%;
+    max-width: 100%;
+  }
+}
