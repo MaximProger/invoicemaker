@@ -211,6 +211,31 @@
   }
 }
 
+.bill-report {
+  font-family: "SF Pro Text";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+
+  display: block;
+
+  width: fit-content;
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+
+  letter-spacing: -0.154px;
+  text-decoration: none;
+  transition: all 0.2s linear;
+
+  color: #1d67ab;
+  border-bottom: 1px solid transparent;
+
+  &:hover {
+    border-color: #1d67ab;
+  }
+}
+
 @media (max-width: $tablet) {
   .bill-intro {
     flex-wrap: wrap;
